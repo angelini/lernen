@@ -1,0 +1,60 @@
+name:                lernen
+version:             0.1.0.0
+github:              "angelini/lernen"
+license:             BSD3
+author:              "Alex Angelini"
+maintainer:          "alex.louis.angelini@gmail.com"
+copyright:           "Alex Angelini"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/angelini/lernen#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- brick
+- containers
+- random-shuffle
+- text
+- vty
+- xml-conduit
+
+library:
+  source-dirs: src
+  default-extensions:
+  - OverloadedStrings
+  - ScopedTypeVariables
+
+executables:
+  lernen-exe:
+    main:                Main.hs
+    source-dirs:         app
+    default-extensions:
+    - OverloadedStrings
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lernen
+
+tests:
+  lernen-test:
+    main:                Spec.hs
+    source-dirs:         test
+    default-extensions:
+    - OverloadedStrings
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lernen
